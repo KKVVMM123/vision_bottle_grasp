@@ -1,0 +1,10 @@
+# Merged for ti5_bottle_grasp perception_node.
+# Source: ti5_calib_app_release/output/session/camera_to_head_connector_result.yaml
+source_frame: camera_color_optical_frame
+target_frame: ti5_head_connector
+translation_unit: mm
+matrix:
+  - [-0.015630000000000002, -0.1673, 0.98577999999999999, 74.808689999999999]
+  - [-0.99987000000000004, 0.0057600000000000004, -0.01487, 35.006509999999999]
+  - [-0.0031900000000000001, -0.98589000000000004, -0.16736999999999999, 98.710030000000003]
+  - [0, 0, 0, 1]

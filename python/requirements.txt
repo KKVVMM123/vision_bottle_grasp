@@ -1,0 +1,8 @@
+# 视觉服务依赖（在 AGX 上安装）
+# 注意：torch/torchvision 请按安装.txt 的 Jetson 配方安装，不要用 pip 默认源：
+#   python3 -m pip install torch==2.8.0 torchvision==0.23.0 --index-url https://pypi.jetson-ai-lab.io/jp6/cu126
+numpy<2
+opencv-python
+PyYAML
+pyrealsense2
+ultralytics

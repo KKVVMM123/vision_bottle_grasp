@@ -1,0 +1,36 @@
+# bottle_grasp 视觉服务配置（相对路径均相对本文件所在目录的上一级，即 python/）
+camera:
+  serial: "261822074748"  # 头部 D435I（AGX 共 4 台 RealSense，固定头部这台）
+
+  width: 1280
+  height: 720
+  fps: 15
+  depth_scale: 0.001    # 对齐深度每单位对应的米数（16bit mm -> 0.001）
+  min_depth_m: 0.20
+  max_depth_m: 2.50
+
+model:
+  path: /home/ti5robot/models/yolo11n-seg.pt   # AGX 上轻量 COCO 分割模型；也可换成本地 best.pt
+  device: "0"            # CUDA 设备号；CPU 用 "cpu"
+  confidence: 0.35
+  classes: [bottle,cup,can] # COCO 类别名，空列表=全部
+
+calibration:
+  yaml: ../calibration/camera_to_head_connector_result.yaml
+  link_length_mm: 162.0
+
+head:
+  # C++ 连接后以实读头部角为准；未连接时用下面默认值
+  default_roll_deg: 0.0
+  default_pitch_deg: 30.0
+  default_yaw_deg: 0.0
+  angles_ttl_sec: 1.0
+
+tcp:
+  host: 127.0.0.1
+  port: 12345
+  recv_timeout_sec: 1.0
+
+grasp:
+  yaw_deg: -14.0                # 抓取腕部偏航角（度）
+  front_penetration_m: 0.0   # 手掌停在瓶身前表面后再深入的距离（小正数，让手指包住瓶身）

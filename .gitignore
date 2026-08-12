@@ -1,0 +1,10 @@
+build/
+logs/*.log
+logs/snapshots/
+__pycache__/
+*.pyc
+.vscode/
+*.o
+*.so
+*.a
+

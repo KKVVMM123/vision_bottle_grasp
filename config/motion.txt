@@ -1,0 +1,51 @@
+# bottle_grasp 运动配置（key=value，# 开头为注释）
+# 运行目录为工程根，路径相对工程根
+
+tcp_host=127.0.0.1
+tcp_port=12345
+# C++ 主动推送头部角给视觉的间隔(ms)，视觉始终用最新头部角
+head_push_interval_ms=100
+
+# 灵巧手串口（本机 T170C：右手走 USB 串口 CH343）
+hand_serial_port=/dev/ttyCH343USB1
+hand_serial_baud=115200
+hand_serial_id=60
+
+# 灵巧手 CAN 通道/ID（CAN 传输备用，本机未用）
+right_hand_can_channel=7
+right_hand_can_id=60
+left_hand_can_channel=6
+left_hand_can_id=70
+
+# 抓取参数（商超式：水平前伸抓取）
+approach_x_offset_m=0.20
+# 抓取深度补偿：视觉给的是瓶子重心，手在 TCP 前方 0.15m，必须停在瓶身前表面再合拢。
+# 负值=向机器人侧回退（≈瓶半径，常见 0.025~0.045，按实际瓶径调）
+grasp_depth_offset_m=-0.01
+grasp_yaw_deg=0.5
+lift_height_m=0.05
+# 手姿态（6 路值，0~65535）：张开/预抓 与 闭合
+hand_open_values=0,0,0,0,0,65000
+# 夹紧值调小可减轻堵转（手压住瓶子转不到位会持续报警）；按需 20000~30000
+hand_close_values=25000,25000,25000,25000,25000,65000
+retreat_x_m=-0.03
+retreat_y_m=0.0
+retreat_z_m=0.0
+move_velocity_mps=0.20
+approach_velocity_mps=0.05
+
+# ---- 放瓶/回预备位（按 h 或 GUI 的 HOME）----
+# 放瓶高度 = 当前 z - lift_height_m（抬升量原样降回，瓶底贴桌面，自校准）
+# 净空高度：后撤后抬到放瓶高度之上多少米（应高于瓶顶）
+release_clearance_height_m=0.12
+# 整臂外摆的横向位移（米，沿 y 平移，整臂协同摆开避让瓶/桌）：
+# 负值=向机器人右侧；dry-run 会打印目标位姿，方向反了改这个值的符号即可
+release_shift_y_m=-0.35
+# 逐指松开：每根手指间隔(ms) 与 速度(0~255)
+hand_release_interval_ms=250
+hand_release_speed=255
+
+# 安全：1=只打印规划不动作
+dry_run=0
+grasp_y_offset_m=-0.01
+hand_hold_values=20000,20000,20000,20000,20000,65000
