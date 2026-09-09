@@ -197,8 +197,6 @@ python3 -m pip install "numpy<2" opencv-python PyYAML pyrealsense2 ultralytics
 ```
 > 注意：`numpy` 必须 <2（与 ultralytics/torch 兼容）；不要用 anaconda 的 python3.13 环境。
 
-### 显示
-- GUI 需要桌面会话：NoMachine 连接 AGX，或在 AGX 本地显示器上运行；纯 ssh 终端无法显示窗口。
 
 ---
 
