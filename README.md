@@ -1,5 +1,5 @@
 单右臂 + 右手灵巧手 + 头部 RealSense，GUI 画面点击目标 → 机器人抓取 → 抬升回退保持。
-**后期会加底盘、下单**。
+**后期会加底盘、下单**。 
 
 ## 运行流程
 
@@ -66,7 +66,7 @@ cd ~/bottle_grasp
 sudo ./build/bottle_grasp
 ```
 
-也可以直接用 `./scripts/start.sh`（前台/后台模式均可，使用系统 python3）。
+也可直接用 `./scripts/start.sh`（前台/后台模式均可，使用系统 python3）。
 
 GUI 操作：点击画面中的瓶子 → 机器人抓取 → 抬升回退保持。
 快捷键：GUI 窗口 `q` 退出、`r` 重新同步头部角、`h` **回预备位**；
@@ -86,13 +86,6 @@ ultralytics 8.3.241 / opencv 4.12.0 / pyrealsense2 / numpy 1.24.4 / PyYAML`
 ```bash
 python3 -c "import numpy, cv2, yaml, torch, torchvision, ultralytics, pyrealsense2; print('视觉环境 OK')"
 ```
-
-缺失时按 安装.txt 的 Jetson 配方安装（Jetson 专用源）：
-```bash
-python3 -m pip install torch==2.8.0 torchvision==0.23.0 --index-url https://pypi.jetson-ai-lab.io/jp6/cu126
-python3 -m pip install "numpy<2" opencv-python PyYAML pyrealsense2 ultralytics
-```
-
 > 说明：不要使用 anaconda 的 `chat_env`/`human_interaction_env` 等虚拟环境运行本工程；
 > 也不要往 anaconda 里装依赖。统一走系统 python3。
 
